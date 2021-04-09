@@ -6,29 +6,29 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
   <bean id="knight" class="sia.knights.BraveKnight">
-    <constructor-arg ref="quest" />
+    <constructor-arg ref="quest"/>
   </bean>
 
   <bean id="quest" class="sia.knights.SlayDragonQuest">
-    <constructor-arg ref="fakePrintStream" />
+    <constructor-arg ref="fakePrintStream"/>
   </bean>
 
   <bean id="minstrel" class="sia.knights.Minstrel">
-    <constructor-arg ref="fakePrintStream" />
+    <constructor-arg ref="fakePrintStream"/>
   </bean>
 
-  <bean id="fakePrintStream" class="sia.knights.FakePrintStream" />
+  <bean id="fakePrintStream" class="sia.knights.FakePrintStream"/>
 
   <aop:config>
     <aop:aspect ref="minstrel">
       <aop:pointcut id="embark"
-          expression="execution(* *.embarkOnQuest(..))"/>
-        
-      <aop:before pointcut-ref="embark" 
-          method="singBeforeQuest"/>
+        expression="execution(* *.embarkOnQuest(..))"/>
 
-      <aop:after pointcut-ref="embark" 
-          method="singAfterQuest"/>
+      <aop:before pointcut-ref="embark"
+        method="singBeforeQuest"/>
+
+      <aop:after pointcut-ref="embark"
+        method="singAfterQuest"/>
     </aop:aspect>
   </aop:config>
 
